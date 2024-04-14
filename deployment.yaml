@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: webdemo
+  name: webdemo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webdemo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: webdemo
+    spec:
+      containers:
+      - image: nksingh0/task:1
+        name: webdemo
+        ports:
+        - containerPort: 3333
+        resources: {}
+status: {}
