@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  creationTimestamp: null
+  labels:
+    app: webdemo1
+  name: webdemo1
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: webdemo1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: webdemo1
+    spec:
+      containers:
+      - image: nksingh0/task:5
+        name: webdemo1
+  strategy:
+    canary:
+      steps:
+        - setWeight: 20
+        - pause: { duration: 60s }
+status: {}
+        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lb-service-canary
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 3333
+    nodePort: 30002 
+  selector:
+    app: webdemo1
+    release: canary
