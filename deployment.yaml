@@ -6,7 +6,7 @@ metadata:
     app: webdemo
   name: webdemo
 spec:
-  replicas: 2
+  replicas: 10
   selector:
     matchLabels:
       app: webdemo
@@ -18,7 +18,7 @@ spec:
         app: webdemo
     spec:
       containers:
-      - image: nksingh0/task:1
+      - image: nksingh0/task:4
         name: webdemo
         resources: {}
 status: {}
@@ -27,7 +27,7 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: node-service
+  name: lb-service
   labels:
     app: webdemo
 spec:
