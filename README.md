@@ -52,7 +52,7 @@ Step18 - Then tested my CI CD setup by makings changes in code in git repo.
 
 Step19 - Rollouts Strategy Canary Release - What Canary Release does is it expose a portion of your traffic to the new version like a new beta version of your application.
 
-Step20 - Installed rollouts by following offical documents.
+Step20 - Installed rollouts by following offical documents https://argo-rollouts.readthedocs.io/en/stable/installation/ .
 
 Step21 - Now make some changes in the images and create a new image of it by running the CI pipeline again.
 
@@ -62,7 +62,11 @@ Step23 - And make sure that in deployment.yaml the older version is mention and 
 
 Step24 - After creating sync the changes in argocd and now you can also see the rollout in it.
 
-Step25 - Clean UP - Delete the app that you created in the ArgoCD  using ArgoCD UI and once you do that all the resources of your app will get deleted from you K8s cluster.
+Step25 - Once everything was good APP health was Healthy and new version was working fine then I promote the rollout and check its status.
+
+Step26 - Then the new image will be running completely and the old one will get deleted.
+
+Step27 - Clean UP - Delete the app that you created in the ArgoCD  using ArgoCD UI and once you do that all the resources of your app will get deleted from you K8s cluster.
      - Also by selecting PRUNE RESOURCES while creating APP what it does is it deleted the resources that are not presented in the github repo
        
 
